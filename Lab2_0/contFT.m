@@ -27,4 +27,9 @@ function [X,f,df] = contFT(x,tstart,dt,df_desired)
     f = ((0:Nfft-1)-Nfft/2)*df; %same as f=-1/(2*dt):df:1/(2*dt) - df
     %phase shift associated with start time
     X=X.*exp(-1j*2*pi*f*tstart);
+%     size(X)
+%     size(f)
+%     size(tstart)
+%     pi
+%     1j
 end
