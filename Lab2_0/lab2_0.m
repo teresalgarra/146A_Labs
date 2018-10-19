@@ -34,14 +34,14 @@ subplot(2,2,4);                         %Fourth plot
 plot(t, x_e, 'y');                      %Part e
 title('Part e: signalx(2t)');           %Plot title
 xlabel('t');                            %X-axis is the time
-print('images/exercice_1','-dpng');            %Saving the plot
+print('images/exercice_1','-dpng');     %Saving the plot
 
 %% CONVOLUTION %%
 
 dt = 0.01;                              %Sample spacing
 t = -4 : dt : 4;                        %Time vector
-x1 = 3 * ((t>=-2).*(t<=-1));            %Given signal
-x2 = 4 * ((t>=1).*(t<=3));              %Given signal
+x1 = 3*((t>=-2).*(t<=-1));              %Given signal
+x2 = 4*((t>=1).*(t<=3));                %Given signal
 
 [y,x]= contconv(x1,x2,t(1),t(1),dt);    %My function
 
@@ -49,15 +49,15 @@ figure(2);                              %Starting to plot
 plot(x, y, 'b'); axis tight;            %Exercice function
 title('ContConv function');             %Title
 xlabel('t');                            %Title for the x-axis
-print('images/exercice_2','-dpng');            %Saving the plot
+print('images/exercice_2','-dpng');     %Saving the plot
 
 %% MATCH FILTER %%
 
 dt = 0.01;                              %Sample spacing
 t = -5 : dt : 5;                        %Time vector
 
-u = 2 * ((t>=1).*(t<=3)) - 3 * ((t>=2).*(t<=4));	%Given signal
-w = conj(fliplr(u));                                %Match filter
+u = 2*((t>=1).*(t<=3))-3*((t>=2).*(t<=4));	%Given signal
+w = conj(fliplr(u));                        %Match filter
 
 figure(3);                              %Starting to plot
 subplot(2,1,1);                         %First plot
@@ -68,7 +68,7 @@ subplot(2,1,2);                         %Second plot
 plot(t, w, 'c'); axis tight;            %Match filter
 title('u*(-t)');                        %Title
 xlabel('t');                            %Title for the x-axis
-print('images/exercice_3a','-dpng');           %Saving the plot
+print('images/exercice_3a','-dpng');    %Saving the plot
 
 [y,x]= contconv(u,w,t(1),t(1),dt);      %Convolution
 
@@ -76,7 +76,7 @@ figure(4);                              %Starting to plot
 plot(x, y, 'g'); axis tight;            %Convolution
 title('Convolution u(t) and u*(-t)');   %Title
 xlabel('t');                            %Title for the x-axis
-print('images/exercice_3b','-dpng');           %Saving the plot
+print('images/exercice_3b','-dpng');    %Saving the plot
 
 v = 2*((t>=-1).*(t<=2))-3*((t>=0).*(t<=1));	%Given signal
 s = u + 1i*v;                               %Total signal
@@ -104,7 +104,7 @@ subplot(2,2,4);                         %Fourth plot
 plot(t, d_im, 'y'); axis tight;         %Im[s*(-t)]
 title('Imaginary Part of s*(-t)');      %Title
 xlabel('t');                            %Title for the x-axis
-print('images/exercice_3c','-dpng');          %Saving the plot
+print('images/exercice_3c','-dpng');    %Saving the plot
 
 [r,f]= contconv(s,d,t(1),t(1),dt);      %Convolution
 
@@ -117,25 +117,25 @@ subplot(3,1,1);                             %First plot
 plot(f, r_re, 'b'); axis tight;             %Re[s(t)]
 title('Real Part of the convolution');      %Title
 xlabel('t');                                %Title for the x-axis
-subplot(3,1,2);                             %First plot
+subplot(3,1,2);                             %Second plot
 plot(f, r_im, 'c'); axis tight;             %Re[s*(-t)]
 title('Imaginary Part of the convolution'); %Title
 xlabel('t');                                %Title for the x-axis
-subplot(3,1,3);                             %First plot
+subplot(3,1,3);                             %Third plot
 plot(f, r_ma, 'g'); axis tight;             %Im[s(t)]
 xlabel('t');                                %Title for the x-axis
 title('Magnitude of the convolution');      %Title
-print('images/exercice_3d','-dpng');               %Saving the plot
+print('images/exercice_3d','-dpng');        %Saving the plot
 
 u1 = 2 * ((t>=-1).*(t<=1)) - 3 * ((t>=0).*(t<=2));      %Given signal
 v1 = 2 * ((t>=-3).*(t<=0)) - 3 * ((t>=-2).*(t<=-1));	%Given signal
 s1 = (u1 + 1i*v1) * exp(1j*pi/4);                       %Total signal
 
-[g,h]= contconv(s1,d,t(1),t(1),dt);     %Convolution
+[g,h]= contconv(s1,d,t(1),t(1),dt);         %Convolution
 
-g_re = real(g);                         %Real part of the convolution
-g_im = imag(g);                         %Imaginary part of the convolution
-g_ma = abs(g);                          %Magnitude of the convolution
+g_re = real(g);                             %Real part of the convolution
+g_im = imag(g);                             %Imaginary part of the convolution
+g_ma = abs(g);                              %Magnitude of the convolution
 
 figure(7);                                  %Starting to plot
 subplot(3,1,1);                             %First plot
@@ -150,7 +150,7 @@ subplot(3,1,3);                             %Third plot
 plot(h, g_ma, 'g'); axis tight;             %Im[s(t)]
 title('Magnitude of the convolution');      %Title
 xlabel('t');                                %Title for the x-axis
-print('images/exercice_3e','-dpng');               %Saving the plot
+print('images/exercice_3e','-dpng');        %Saving the plot
 
 %% FOURIER TRANSFORM %%
 
@@ -166,23 +166,23 @@ figure(8);                              %Starting to plot
 plot(f, X_ma, 'b'); axis tight;         %Starting to plot
 title('Magnitude of the FT');           %Title
 xlabel('f');                            %Title for the x-axis
-print('images/exercice_4a','-dpng');           %Saving the plot
+print('images/exercice_4a','-dpng');    %Saving the plot
 
 figure(9);                              %Starting to plot
 plot(f, X_ph, 'c'); axis tight;         %Starting to plot
 title('Phase of the FT');               %Title
 xlabel('f');                            %Title for the x-axis
-print('images/exercice_4b','-dpng');           %Saving the plot
+print('images/exercice_4b','-dpng');    %Saving the plot
 
 %% MATCHED FILTER IN FREQUENCY DOMAIN %%
 
-dt = 1e-5;                             %Sample spacing
+dt = 1e-5;                              %Sample spacing
 df_i = 1;                               %Desired frequency resolution
 t = -5e-3 : dt : 5e-3;                  %Time vector
 
-u = 2 * ((t>=1e-3).*(t<=3e-3)) - 3 * ((t>=2e-3).*(t<=4e-3));	%Given signal
-v = ((t>=-1e-3).*(t<=2e-3)) + 2 * ((t>=0).*(t<=1e-3));          %Given signal
-s = u + 1i*v;                                                   %Total signal
+u = 2*((t>=1e-3).*(t<=3e-3))-3*((t>=2e-3).*(t<=4e-3));	%Given signal
+v = ((t>=-1e-3).*(t<=2e-3))+2*((t>=0).*(t<=1e-3));      %Given signal
+s = u + 1i*v;                                           %Total signal
 
 [X, f, df] = contFT(s,t(1),dt,df_i);    %Given funtion
 X_ma = abs(X);                          %Magnitude of the FT
@@ -192,13 +192,13 @@ figure(10);                             %Starting to plot
 plot(f, X_ma, 'b'); axis tight;         %Starting to plot
 title('Magnitude of the FT');           %Title
 xlabel('f');                            %Title for the x-axis
-print('images/exercice_5a','-dpng');           %Saving the plot
+print('images/exercice_5a','-dpng');    %Saving the plot
 
 figure(11);                                 %Starting to plot
 plot(f, X_ma, 'g'); xlim([-4e3,4e3]);       %Starting to plot
-title('Magnitude of the FT (Close-up)');    %Title
+title('Magnitude of the FT (Zoomed-In)');   %Title
 xlabel('f');                                %Title for the x-axis
-print('images/exercice_5a_c','-dpng');             %Saving the plot
+print('images/exercice_5a_c','-dpng');      %Saving the plot
 
 g = fliplr(conj(s));                    %Match filter
 [h,y]= contconv(s,g,t(1),t(1),dt);      %Convolution
@@ -216,27 +216,27 @@ subplot(2,1,2);                                     %Second plot
 plot(f, X2, 'c'); axis tight;                       %Plot
 title('Magnitude square of the FT');                %Title
 xlabel('f');                                        %Title for the x-axis
-print('images/exercice_5b','-dpng');                       %Saving the plot
+print('images/exercice_5b','-dpng');                %Saving the plot
 
 figure(13);                                                 %Starting to plot
 subplot(2,1,1);                                             %First plot
 plot(k, H_ma, 'b'); xlim([-4e3,4e3]);                       %Plot
-title('Magnitude of the FT of the convolution (Close-up)'); %Title
+title('Magnitude of the FT of the convolution (Zoomed-In)');%Title
 xlabel('f');                                                %Title for the x-axis
 subplot(2,1,2);                                             %Second plot
 plot(f, X2, 'c'); xlim([-4e3,4e3]);                         %Plot
-title('Magnitude square of the FT (Close-up)');             %Title
+title('Magnitude square of the FT (Zoomed-In)');            %Title
 xlabel('f');                                                %Title for the x-axis
-print('images/exercice_5b_c','-dpng');                               %Saving the plot
+print('images/exercice_5b_c','-dpng');                      %Saving the plot
 
 figure(14);                                         %Starting to plot
 plot(k, H_ph, 'g'); axis tight;                     %Starting to plot
 title('Phase of the FT of the convolution');        %Title
 xlabel('f');                                        %Title for the x-axis
-print('images/exercice_5c','-dpng');                       %Saving the plot
+print('images/exercice_5c','-dpng');                %Saving the plot
 
-figure(15);                                             %Starting to plot
-plot(k, H_ph, 'b'); ylim([-1,1]);                       %Starting to plot
-title('Phase of the FT of the convolution (Far-off)');  %Title
-xlabel('f');                                            %Title for the x-axis
-print('images/exercice_5c_f','-dpng');                           %Saving the plot
+figure(15);                                                 %Starting to plot
+plot(k, H_ph, 'b'); ylim([-1,1]);                           %Starting to plot
+title('Phase of the FT of the convolution (Zoomed-Out)');   %Title
+xlabel('f');                                                %Title for the x-axis
+print('images/exercice_5c_f','-dpng');                      %Saving the plot

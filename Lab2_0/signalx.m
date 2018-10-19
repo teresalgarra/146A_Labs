@@ -3,11 +3,11 @@ function [x] = signalx(t)
     %This funtion takes an array of values and gives an output vector x
     %with the values of our function evaluated at those time points.
 
-    N = length(t);                              %Getting the length of the array
+    N = length(t);                              %Length of the array
     x = zeros(N,1);                             %Creating the vector x
     j = 1;                                      %Iterator for the loop       
 
-    for z = t                                   %Taking the loop through every value of t
+    for z = t                                   %Check every value of t
         if z < -3                               %First condition
             value = 0;                          %First value
         elseif (z >= -3) && (z <= -1)           %Second condition
@@ -18,7 +18,7 @@ function [x] = signalx(t)
             value = 0;                          %Fourth value
         end                                     %End of the conditions
 
-        x(j) = value;                           %Assigning the corresponding value to x
-        j = j+1;                                %Moving forward with the iterator
+        x(j) = value;                           %Assigning the value to x
+        j = j+1;                                %Moving the iterator
     end                                         %End of the loop
 end

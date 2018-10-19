@@ -1,0 +1,33 @@
+%% LAB 2.2: MODELING A LAMPPOST BASED BROADBAND NETWORK %%
+
+%The goal of this lab is to illustrate how wireless multipath channels 
+%can be modeled in complex baseband.
+
+clear;
+clc;
+close all;
+
+%% LABORATORY ASSIGNMENT %%
+
+f = 60e9;                       %Unlicensed spectrum at 5GHz
+A1 = 1;                         %Direct path
+phi1 = 0;                        %Direct path
+
+n1 = 1;                         %Refractive index of air
+n2 = 8;                         %Refractive index of ground
+
+D = 200;
+ht = 10;
+hr = 10;
+
+d1 = sqrt(D.^2 + (ht-hr).^2);
+d2 = sqrt(D.^2 + (ht+hr).^2);
+
+sin(phi_i) = ht/d
+
+A2 = (n1*cos(phi_i)-n2*cos(phi_t))/(n1*cos(phi_i)+n2*cos(phi_t));
+%%2.2%%
+
+%The delay spread 
+
+%% Fading and diversity for the backhaul link %%
