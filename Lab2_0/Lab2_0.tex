@@ -59,8 +59,8 @@ To write a function \textit{signalx} that evaluates the following signal at an a
 \bigskip
 
 \begin{equation}\label{eq:ex1}
-    x(t) = 
-    \begin{cases} 
+    x(t) =
+    \begin{cases}
       2e^{t+2} & -3 \leq t \leq -1 \\
       2e^{t+2}\cos(2\pi t) & -1 \leq t \leq 4 \\
       0 & else\\
@@ -77,8 +77,8 @@ I used a for loop and an if loop:
     function [x] = signalx(t)
         N = length(t);                              %Length of the array
         x = zeros(N,1);                             %Creating the vector x
-        j = 1;                                      %Iterator for the loop    
-        
+        j = 1;                                      %Iterator for the loop
+
         for z = t                                   %Check every value of t
             if z < -3                               %First condition
                 value = 0;                          %First value
@@ -89,7 +89,7 @@ I used a for loop and an if loop:
             elseif z > 4                            %Fourth condition
                 value = 0;                          %Fourth value
             end                                     %End of the conditions
-        
+
             x(j) = value;                           %Assigning the value to x
             j = j+1;                                %Moving the iterator
         end                                         %End of the loop
@@ -98,7 +98,7 @@ I used a for loop and an if loop:
 
 \bigskip
 
-In parts b, c, d and e, I used this function to plot $x(t)$, $x(t-3)$, $x(3-t)$ and $x(2t)$ versus $t$ for $-6\leq t \leq 6$. As a result, I created the following plot: 
+In parts b, c, d and e, I used this function to plot $x(t)$, $x(t-3)$, $x(3-t)$ and $x(2t)$ versus $t$ for $-6\leq t \leq 6$. As a result, I created the following plot:
 
 \newpage
 
@@ -111,7 +111,7 @@ In parts b, c, d and e, I used this function to plot $x(t)$, $x(t-3)$, $x(3-t)$ 
 
 \subsection{Convolution:}
 
-For this part, I wrote a Matlab function called \textit{contconv} that computes an approximation to continuous-time convolution. 
+For this part, I wrote a Matlab function called \textit{contconv} that computes an approximation to continuous-time convolution.
 
 \begin{itemize}
     \item Inputs:
@@ -136,7 +136,7 @@ Therefore, the final function was:
 \begin{lstlisting}
     function [y, t] = contconv(x1, x2, t1, t2, dt)
         y=conv(x1,x2)*dt;
-        t = (0 : length(y)-1)*dt + t1 + t2;  
+        t = (0 : length(y)-1)*dt + t1 + t2;
     end
 \end{lstlisting}
 
@@ -159,7 +159,7 @@ To check that the funtion was working as it should, I convolved two boxes: $3I_{
 
 \subsection{Matched Filter:}
 
-First, I had to plot the signal $u(t) = 2I_{[1,3]}(t) - 3I_{[2,4]}(t)$ and its matched filter, that it, $u*(-t)$. To get $u(t)$, I had to define a time vector $t$ and perform a logic operation. When $t\leq 0$, the result is 1, and when $t > 0$, the result is 0. Doing the same for both limits and multiplying them gives a vector where the 1-values are the intersection of both vectors and, therefore, the desired rectangular funtion. 
+First, I had to plot the signal $u(t) = 2I_{[1,3]}(t) - 3I_{[2,4]}(t)$ and its matched filter, that it, $u*(-t)$. To get $u(t)$, I had to define a time vector $t$ and perform a logic operation. When $t\leq 0$, the result is 1, and when $t > 0$, the result is 0. Doing the same for both limits and multiplying them gives a vector where the 1-values are the intersection of both vectors and, therefore, the desired rectangular funtion.
 
 \bigskip
 
@@ -240,7 +240,7 @@ The last question asked for this section was if the output of $s_{1}(t)$ is pred
 
 \subsection{Fourier Transform:}
 
-For this part of the lab I used the function \textit{contFT} given in the book. I calculated the transform of $s(t) = 3\sinc (2t-3)$ where the sampling rate was $16MHz$ $(dt = \frac{1}{16\times 10^{6}})$ and the desired frequency resolution was $1 KHz$. I calculated the magnitude and the phase of the resulting FT. For that, I used the following piece of code:
+For this part of the lab I used the function \textit{contFT} given in the book. I calculated the transform of $s(t) = 3sinc(2t-3)$ where the sampling rate was $16MHz$ $(dt = \frac{1}{16\times 10^{6}})$ and the desired frequency resolution was $1 KHz$. I calculated the magnitude and the phase of the resulting FT. For that, I used the following piece of code:
 
 \bigskip
 
@@ -301,8 +301,8 @@ I did the convolution of $s(t)$ and its matched filter $s_{mf}(t)$ followed by t
 \bigskip
 
 \begin{lstlisting}
-    u = 2* ¡((t>=1e-3).*(t<=3e-3)) - 3*((t>=2e-3).*(t<=4e-3));	%Given signal
-    v = ((t>=-1e-3).*(t<=2e-3)) + 2*((t>=0).*(t<=1e-3));        %Given signal
+    u = 2*((t>=1e-3).*(t<=3e-3))-3*((t>=2e-3).*(t<=4e-3));	%Given signal
+    v = ((t>=-1e-3).*(t<=2e-3))+2*((t>=0).*(t<=1e-3));          %Given signal
     s = u + 1i*v;                           %Total signal
     g = fliplr(conj(s));                    %Match filter
     [h,y]= contconv(s,g,t(1),t(1),dt);      %Convolution
@@ -361,4 +361,3 @@ In this lab I got to work with all the functions that we will use during the qua
 \vspace{4cm}
 
 \end{document}
-
